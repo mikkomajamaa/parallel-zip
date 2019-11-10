@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-void *zip(void *arg);
+void *pzip(void *arg);
 
 int main(int argc, char *argv[]) {
   pthread_t threads[argc];
@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
 
   // spawn threads
   for (i = 0; i < argc-1; i++) {
-    if ((rc = pthread_create(&threads[i], NULL, zip, argv[i+1])) != 0) {
+    if ((rc = pthread_create(&threads[i], NULL, pzip, argv[i+1])) != 0) {
       perror("Error on creating thread.\n");
       exit(1);
     }
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-void *zip(void *arg) {
+void *pzip(void *arg) {
   FILE *fp;
   int c, p, counter;
   // p is the character to be counted
