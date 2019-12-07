@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 
 void *punzip(void *arg) {
   FILE *fp;
-  int j, k, p, counter;
+  int j, k;
   int *c = malloc(sizeof(int));
 
   fp = fopen(arg, "r");
